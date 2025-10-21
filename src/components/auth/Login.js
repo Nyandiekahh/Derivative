@@ -14,29 +14,59 @@ const Login = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const token1 = params.get('token1');
-    const acct1 = params.get('acct1');
+    // Parse URL parameters
+    const searchParams = new URLSearchParams(location.search);
+    
+    // Try to get token from different possible parameter names
+    const token = searchParams.get('token1') || 
+                  searchParams.get('token') || 
+                  searchParams.get('acct1');
+    
+    console.log('Login page - All params:', Object.fromEntries(searchParams.entries()));
+    console.log('Token found:', token);
 
-    if (token1 && acct1) {
-      handleAuthCallback(token1, acct1);
+    if (token) {
+      handleAuthCallback(token);
     }
-  }, [location]);
+  }, [location.search]);
 
-  const handleAuthCallback = async (token, account) => {
+  const handleAuthCallback = async (token) => {
+    console.log('Handling auth callback with token:', token);
+    
     try {
+      // Store token first
       dispatch(setToken(token));
+      
+      // Initialize auth
       await dispatch(initializeAuth(token)).unwrap();
+      
+      console.log('Auth successful, navigating to trader');
       toast.success('Login successful!');
-      navigate('/trader');
+      
+      // Navigate to trader page
+      setTimeout(() => {
+        navigate('/trader', { replace: true });
+      }, 100);
+      
     } catch (error) {
       console.error('Auth error:', error);
-      toast.error('Authentication failed. Please try again.');
+      toast.error(`Authentication failed: ${error.message}`);
+      
+      // Clear any stored token
+      localStorage.removeItem('derivToken');
     }
   };
 
   const handleLogin = () => {
-    const oauthUrl = derivAPI.getOAuthURL();
+    const appId = process.env.REACT_APP_DERIV_APP_ID;
+    const callbackUrl = encodeURIComponent(process.env.REACT_APP_CALLBACK_URL);
+    
+    // Construct OAuth URL
+    const oauthUrl = `https://oauth.deriv.com/oauth2/authorize?app_id=${appId}&l=EN&brand=deriv`;
+    
+    console.log('Redirecting to:', oauthUrl);
+    console.log('Callback URL:', process.env.REACT_APP_CALLBACK_URL);
+    
     window.location.href = oauthUrl;
   };
 
