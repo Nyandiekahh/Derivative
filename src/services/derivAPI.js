@@ -2,19 +2,32 @@ import websocket from './websocket';
 
 class DerivAPI {
   async initialize() {
+    console.log('Initializing Deriv API...');
     await websocket.connect();
+    console.log('Deriv API initialized');
   }
 
-  authorize(token) {
+  async authorize(token) {
+    console.log('Authorizing with token:', token);
+    
     return new Promise((resolve, reject) => {
+      const timeout = setTimeout(() => {
+        reject(new Error('Authorization timeout'));
+      }, 10000); // 10 second timeout
+
       const unsubscribe = websocket.subscribe('authorize', (data) => {
+        clearTimeout(timeout);
         unsubscribe();
+        
+        console.log('Authorization response:', data);
+        
         if (data.error) {
           reject(data.error);
         } else {
           resolve(data.authorize);
         }
       });
+      
       websocket.authorize(token);
     });
   }
@@ -116,7 +129,6 @@ class DerivAPI {
   getOAuthURL() {
     const oauthUrl = process.env.REACT_APP_DERIV_OAUTH_URL;
     const appId = process.env.REACT_APP_DERIV_APP_ID;
-    const callbackUrl = encodeURIComponent(process.env.REACT_APP_CALLBACK_URL);
     
     return `${oauthUrl}?app_id=${appId}&l=EN&brand=deriv`;
   }

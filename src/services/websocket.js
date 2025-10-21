@@ -6,36 +6,52 @@ class DerivWebSocket {
     this.reconnectAttempts = 0;
     this.maxReconnectAttempts = 5;
     this.reconnectDelay = 3000;
+    this.isConnected = false;
+    this.connectionPromise = null;
   }
 
   connect() {
-    return new Promise((resolve, reject) => {
+    // Return existing connection promise if already connecting
+    if (this.connectionPromise) {
+      return this.connectionPromise;
+    }
+
+    this.connectionPromise = new Promise((resolve, reject) => {
       const wsUrl = process.env.REACT_APP_DERIV_WEBSOCKET_URL;
       const appId = process.env.REACT_APP_DERIV_APP_ID;
+      
+      console.log('Connecting to WebSocket:', `${wsUrl}?app_id=${appId}`);
       
       this.ws = new WebSocket(`${wsUrl}?app_id=${appId}`);
 
       this.ws.onopen = () => {
         console.log('WebSocket Connected');
+        this.isConnected = true;
         this.reconnectAttempts = 0;
         resolve();
       };
 
       this.ws.onmessage = (event) => {
         const data = JSON.parse(event.data);
+        console.log('WebSocket message received:', data);
         this.handleMessage(data);
       };
 
       this.ws.onerror = (error) => {
         console.error('WebSocket Error:', error);
+        this.isConnected = false;
         reject(error);
       };
 
       this.ws.onclose = () => {
         console.log('WebSocket Closed');
+        this.isConnected = false;
+        this.connectionPromise = null;
         this.attemptReconnect();
       };
     });
+
+    return this.connectionPromise;
   }
 
   attemptReconnect() {
@@ -46,12 +62,19 @@ class DerivWebSocket {
     }
   }
 
-  send(data) {
+  async send(data) {
+    // Wait for connection if not connected
+    if (!this.isConnected) {
+      console.log('WebSocket not connected, waiting for connection...');
+      await this.connect();
+    }
+
     if (this.ws && this.ws.readyState === WebSocket.OPEN) {
       const requestData = {
         ...data,
         req_id: this.requestId++
       };
+      console.log('Sending WebSocket message:', requestData);
       this.ws.send(JSON.stringify(requestData));
       return requestData.req_id;
     } else {
@@ -174,6 +197,8 @@ class DerivWebSocket {
     if (this.ws) {
       this.ws.close();
       this.ws = null;
+      this.isConnected = false;
+      this.connectionPromise = null;
     }
   }
 }
