@@ -20,9 +20,13 @@ const TraderPage = () => {
   const tradeAnimation = useSelector((state) => state.trade.tradeAnimation);
 
   useEffect(() => {
+    // Fetch active symbols
     dispatch(fetchActiveSymbols());
+    
+    // Fetch portfolio
     dispatch(fetchPortfolio());
 
+    // Subscribe to balance updates
     const unsubscribeBalance = derivAPI.subscribeBalance((data) => {
       if (data.balance) {
         dispatch(setBalance({
@@ -33,7 +37,9 @@ const TraderPage = () => {
     });
 
     return () => {
-      unsubscribeBalance();
+      if (unsubscribeBalance) {
+        unsubscribeBalance();
+      }
     };
   }, [dispatch]);
 
