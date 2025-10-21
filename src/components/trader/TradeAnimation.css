@@ -1,0 +1,127 @@
+.trade-animation-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.trade-animation-modal {
+  position: relative;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 48px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.close-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 8px;
+  background: transparent;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+}
+
+.close-button:hover {
+  background: #2a2a2a;
+  color: #fff;
+}
+
+.animation-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.countdown-circle {
+  color: #ff444f;
+  padding: 24px;
+  background: rgba(255, 68, 79, 0.1);
+  border-radius: 50%;
+  border: 2px solid #ff444f;
+}
+
+.result-icon {
+  padding: 24px;
+  border-radius: 50%;
+}
+
+.result-icon.win {
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.1);
+  border: 2px solid #4ade80;
+}
+
+.result-icon.loss {
+  color: #ff444f;
+  background: rgba(255, 68, 79, 0.1);
+  border: 2px solid #ff444f;
+}
+
+.animation-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.countdown-number {
+  font-size: 64px;
+  font-weight: 700;
+  color: #ff444f;
+  line-height: 1;
+}
+
+.result-amount {
+  font-size: 48px;
+  font-weight: 700;
+  color: #4ade80;
+  line-height: 1;
+}
+
+.result-amount.loss {
+  color: #ff444f;
+}
+
+.animation-subtitle {
+  font-size: 16px;
+  color: #999;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .trade-animation-modal {
+    padding: 32px 24px;
+  }
+
+  .animation-title {
+    font-size: 24px;
+  }
+
+  .countdown-number {
+    font-size: 48px;
+  }
+
+  .result-amount {
+    font-size: 36px;
+  }
+}

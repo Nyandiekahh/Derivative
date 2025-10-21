@@ -1,0 +1,111 @@
+.bot-controls {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.controls-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.controls-header h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.status-indicator {
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-indicator.running {
+  background: rgba(74, 222, 128, 0.1);
+  color: #4ade80;
+  border: 1px solid #4ade80;
+}
+
+.status-indicator.stopped {
+  background: rgba(153, 153, 153, 0.1);
+  color: #999;
+  border: 1px solid #666;
+}
+
+.controls-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.control-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.control-button.start {
+  background: #4ade80;
+  color: #0e0e0e;
+}
+
+.control-button.start:hover:not(:disabled) {
+  background: #22c55e;
+  transform: translateY(-2px);
+}
+
+.control-button.pause {
+  background: #fbbf24;
+  color: #0e0e0e;
+}
+
+.control-button.pause:hover:not(:disabled) {
+  background: #f59e0b;
+  transform: translateY(-2px);
+}
+
+.control-button.stop {
+  background: #ff444f;
+  color: #fff;
+}
+
+.control-button.stop:hover:not(:disabled) {
+  background: #ef4444;
+  transform: translateY(-2px);
+}
+
+.control-button.reset {
+  background: #6366f1;
+  color: #fff;
+}
+
+.control-button.reset:hover {
+  background: #4f46e5;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .controls-buttons {
+    grid-template-columns: 1fr;
+  }
+}

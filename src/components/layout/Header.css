@@ -1,0 +1,145 @@
+.header {
+  background: #1a1a1a;
+  border-bottom: 1px solid #2a2a2a;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #ff444f;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.header-nav {
+  display: flex;
+  gap: 12px;
+}
+
+.nav-button {
+  padding: 8px 20px;
+  background: transparent;
+  color: #999;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+  color: #fff;
+  background: #2a2a2a;
+}
+
+.nav-button.active {
+  color: #fff;
+  background: #ff444f;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.balance-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: #0e0e0e;
+  border-radius: 8px;
+  border: 1px solid #2a2a2a;
+}
+
+.balance-label {
+  color: #999;
+  font-size: 13px;
+}
+
+.balance-amount {
+  color: #4ade80;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #0e0e0e;
+  border-radius: 8px;
+  border: 1px solid #2a2a2a;
+  color: #fff;
+  font-size: 14px;
+}
+
+.logout-button {
+  padding: 8px;
+  background: #2a2a2a;
+  border: none;
+  border-radius: 8px;
+  color: #ff444f;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.logout-button:hover {
+  background: #ff444f;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 12px 16px;
+    flex-wrap: wrap;
+  }
+
+  .header-left {
+    gap: 20px;
+  }
+
+  .header-logo span {
+    display: none;
+  }
+
+  .nav-button {
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+
+  .balance-display {
+    padding: 6px 12px;
+  }
+
+  .balance-amount {
+    font-size: 14px;
+  }
+
+  .user-info span {
+    display: none;
+  }
+}

@@ -1,0 +1,157 @@
+.bot-templates {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.templates-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.templates-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.close-templates {
+  padding: 8px;
+  background: transparent;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 6px;
+}
+
+.close-templates:hover {
+  background: #2a2a2a;
+  color: #fff;
+}
+
+.templates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.template-card {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  background: #0e0e0e;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.template-card:hover {
+  border-color: #ff444f;
+  transform: translateY(-2px);
+}
+
+.template-icon {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 68, 79, 0.1);
+  border-radius: 12px;
+  color: #ff444f;
+}
+
+.template-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.template-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.template-header h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.difficulty {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.difficulty.beginner {
+  background: rgba(74, 222, 128, 0.1);
+  color: #4ade80;
+}
+
+.difficulty.intermediate {
+  background: rgba(251, 191, 36, 0.1);
+  color: #fbbf24;
+}
+
+.difficulty.advanced {
+  background: rgba(255, 68, 79, 0.1);
+  color: #ff444f;
+}
+
+.template-description {
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.template-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.template-category {
+  font-size: 11px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.use-template-btn {
+  padding: 6px 14px;
+  background: #ff444f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.use-template-btn:hover {
+  background: #ff6b6b;
+}
+
+@media (max-width: 768px) {
+  .templates-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .template-card {
+    flex-direction: column;
+  }
+}

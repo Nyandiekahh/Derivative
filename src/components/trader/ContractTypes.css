@@ -1,0 +1,105 @@
+.contract-types {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.section-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #999;
+}
+
+.contract-categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.category-button {
+  padding: 12px;
+  background: #0e0e0e;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  color: #999;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.category-button:hover {
+  background: #2a2a2a;
+  color: #fff;
+}
+
+.category-button.active {
+  background: #ff444f;
+  border-color: #ff444f;
+  color: #fff;
+}
+
+.contract-subtypes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.subtype-button {
+  padding: 14px;
+  background: #0e0e0e;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.subtype-button:hover {
+  background: #2a2a2a;
+  border-color: #3a3a3a;
+}
+
+.subtype-button.active {
+  background: rgba(255, 68, 79, 0.1);
+  border-color: #ff444f;
+}
+
+.subtype-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.subtype-desc {
+  font-size: 12px;
+  color: #999;
+  line-height: 1.4;
+}
+
+.contract-description {
+  padding: 12px;
+  background: #0e0e0e;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+}
+
+.contract-description p {
+  font-size: 12px;
+  color: #999;
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .contract-categories {
+    grid-template-columns: 1fr;
+  }
+
+  .category-button {
+    padding: 10px;
+    font-size: 11px;
+  }
+}

@@ -1,0 +1,27 @@
+.bot-builder {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.builder-header {
+  padding: 20px;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.builder-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.builder-header p {
+  font-size: 13px;
+  color: #999;
+}
+
+.builder-content {
+  flex: 1;
+  min-height: 0;
+}

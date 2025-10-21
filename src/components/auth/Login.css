@@ -1,0 +1,137 @@
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0e0e0e 0%, #1a1a2e 100%);
+  padding: 20px;
+}
+
+.login-card {
+  background: #1a1a1a;
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 450px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid #2a2a2a;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.login-icon {
+  color: #ff444f;
+  margin-bottom: 16px;
+}
+
+.login-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #ff444f 0%, #ff6b6b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.login-header p {
+  color: #999;
+  font-size: 14px;
+}
+
+.login-content {
+  margin-bottom: 30px;
+}
+
+.login-content h2 {
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+.login-subtitle {
+  color: #999;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+.login-button {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #ff444f 0%, #ff6b6b 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  box-shadow: 0 8px 24px rgba(255, 68, 79, 0.3);
+}
+
+.login-features {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  background: #0e0e0e;
+  border-radius: 8px;
+  border: 1px solid #2a2a2a;
+}
+
+.feature-icon {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.feature-item span {
+  font-size: 12px;
+  color: #999;
+  text-align: center;
+}
+
+.login-footer {
+  text-align: center;
+  padding-top: 30px;
+  border-top: 1px solid #2a2a2a;
+}
+
+.login-footer p {
+  color: #666;
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+  .login-card {
+    padding: 30px 20px;
+  }
+
+  .login-features {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .feature-item {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 12px;
+  }
+}
